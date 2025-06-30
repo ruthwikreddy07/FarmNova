@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Farming Guide</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <h1>SMART FARMING GUIDE</h1>
+    <div class="dropdown">
+      <button class="dropbtn" onclick="toggleDropdown()">Select Crop</button>
+      <div id="dropdownContent" class="dropdown-content">
+        <a href="#" onclick="showCrop('rice')">Rice</a>
+        <a href="#" onclick="showCrop('maize')">Maize</a>
+        <a href="#" onclick="showCrop('jute')">Jute</a>
+        <a href="#" onclick="showCrop('cotton')">Cotton</a>
+        <a href="#" onclick="showCrop('coconut')">Coconut</a>
+        <a href="#" onclick="showCrop('chickpea')">Chickpea</a>
+        <a href="#" onclick="showCrop('pigeonpeas')">Pigeon Peas</a>
+        <a href="#" onclick="showCrop('mothbeans')">Moth Beans</a>
+        <a href="#" onclick="showCrop('mungbean')">Mung Bean</a>
+        <a href="#" onclick="showCrop('blackgram')">Black Gram</a>
+        <a href="#" onclick="showCrop('lentil')">Lentil</a>
+        <a href="#" onclick="showCrop('pomegranate')">Pomegranate</a>
+        <a href="#" onclick="showCrop('watermelon')">Watermelon</a>
+        <a href="#" onclick="showCrop('banana')">Banana</a>
+        <a href="#" onclick="showCrop('grapes')">Grapes</a>
+        <a href="#" onclick="showCrop('apple')">Apple</a>
+        <a href="#" onclick="showCrop('orange')">Orange</a>
+        <a href="#" onclick="showCrop('papaya')">Papaya</a>
+        <a href="#" onclick="showCrop('coffee')">Coffee</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Crop Info -->
+  <section id="cropInfo" class="crop-info"></section>
+
+  <!-- Recommendations Section -->
+  <main>
+    <section id="crops-table">
+      <h2>🌾 Average Conditions for Crops</h2>
+      <table id="crop-table">
+        <thead>
+          <tr>
+            <th>Crop</th>
+            <th>Nitrogen</th>
+            <th>Phosphorus</th>
+            <th>Potassium</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>pH</th>
+            <th>Rainfall (mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows inserted by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <section id="crop-recommendation-how-it-works">
+      <h2>📘 How Crop Recommendation Works</h2>
+      <ol>
+        <li><strong>Input:</strong> Provide soil, climate, and environmental details.</li>
+        <li><strong>Model:</strong> The system evaluates conditions with ML algorithms.</li>
+        <li><strong>Output:</strong> Displays the most suitable crops with data.</li>
+      </ol>
+    </section>
+
+    <section id="crop-recommendation-how-it-works">
+      <h2>🩺 How Crop Disease Detection Works</h2>
+      <ol>
+        <li><strong>Upload Image:</strong> Go to Disease Recognition and upload a photo.</li>
+        <li><strong>Analysis:</strong> AI identifies symptoms and suggests diseases.</li>
+        <li><strong>Result:</strong> Get suggestions for treatment or further action.</li>
+      </ol>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

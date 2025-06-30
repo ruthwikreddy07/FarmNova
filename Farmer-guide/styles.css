@@ -1,0 +1,166 @@
+/* === Reset & Base === */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+  color: #333;
+}
+
+/* === Header === */
+header {
+  background: linear-gradient(135deg, #00b894, #55efc4);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+/* === Sections === */
+section {
+  background: #ffffffee;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  max-width: 1000px;
+}
+
+/* === Table === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #00b894;
+  color: white;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e0f7fa;
+}
+
+/* === Buttons === */
+button,
+.dropbtn {
+  background: linear-gradient(to right, #00b894, #00cec9);
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover,
+.dropbtn:hover {
+  background: #00b894;
+  transform: scale(1.05);
+}
+
+/* === Dropdown === */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 14px 20px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #e0f2f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* === Crop Info === */
+.crop-info {
+  background: linear-gradient(45deg, #e0f7fa, #f1f8e9);
+  padding: 25px;
+  border-left: 8px solid #00b894;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  color: #222;
+}
+
+/* === Footer === */
+.footer {
+  background: #00b894;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1rem;
+  border-top: 4px solid #00cec9;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  button,
+  .dropbtn {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  section {
+    margin: 20px;
+    padding: 20px;
+  }
+}
