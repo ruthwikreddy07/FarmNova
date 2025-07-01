@@ -14,40 +14,28 @@ def get_base64_image(image_path):
 
 # --- Apply Background Style ---
 
-try:
-    bg_img = get_base64_image("background.jpg")
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{bg_img}");                
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }}
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("/app/static/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .block-container {
+        background-color: rgba(0, 0, 0, 0);
+        padding: 2rem;
+    }
+    h1, h2, h3, label {
+        color: white !important;
+        text-shadow: 2px 2px 4px #000000;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-         /* Remove white block container */
-        .block-container {{
-            background-color: rgba(0, 0, 0, 0); /* fully transparent */
-            padding: 2rem;
-        }}
-
-        /* Improve heading visibility */
-        h1, h2, h3 {{
-            color: white !important;
-            text-shadow: 2px 2px 4px #000000;
-        }}
-
-        label {{
-            color: white !important;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-except:
-    st.warning("⚠️ `background.jpg` not found. Add it for background image.")
 
 # --- Load Model Safely ---
 try:
