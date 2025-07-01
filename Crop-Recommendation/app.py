@@ -13,7 +13,6 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 # --- Apply Background Style ---
-st.write("Files in current dir:", os.listdir())
 
 try:
     bg_img = get_base64_image("background.jpg")
