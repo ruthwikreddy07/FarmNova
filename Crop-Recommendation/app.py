@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pickle
 import base64
+import os
 
 # --- Page config ---
 st.set_page_config(page_title="Smart Crop Recommender", layout="centered")
@@ -47,8 +48,16 @@ try:
 except:
     st.warning("⚠️ `background.jpg` not found. Add it for background image.")
 
-# --- Load Model ---
-model = pickle.load(open("RF.pkl", "rb"))
+# --- Load Model Safely ---
+try:
+    current_dir = os.path.dirname(__file__)
+    model_path = os.path.join(current_dir, "RF.pkl")
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+except FileNotFoundError:
+    st.error("❌ RF.pkl model file not found! Make sure it's in the same directory as app.py.")
+    st.stop()
+
 
 # --- Header ---
 st.markdown("""
