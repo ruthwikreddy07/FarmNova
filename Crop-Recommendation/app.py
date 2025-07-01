@@ -18,7 +18,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image: url("/app/static/background.jpg");
+        background-image: url("static/background.jpg");  /* ✅ This works on Streamlit Cloud */
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
