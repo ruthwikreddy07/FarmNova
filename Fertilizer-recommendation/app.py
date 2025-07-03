@@ -1,48 +1,42 @@
 import streamlit as st
 import base64
-import os
-from pathlib import Path
-from predictor import predict_fertilizer
+from predictor import predict_fertilizer  # from predictor.py
 
 # --- Page Config ---
 st.set_page_config(page_title="Fertilizer Recommender", page_icon="🌿", layout="centered")
 
-# --- Load background image from static/background.jpg ---
+# --- Load background image ---
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
 try:
-    app_dir = Path(__file__).parent
-    bg_image_path = app_dir / "static" / "background.jpg"
-
-    if bg_image_path.exists():
-        bg_base64 = get_base64_image(bg_image_path)
-        st.markdown(
-            f"""
-            <style>
-            .stApp {{
-                background-image: url("data:image/jpg;base64,{bg_base64}");
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-            }}
-            .block-container {{
-                background-color: rgba(0, 0, 0, 0);
-                padding: 2rem;
-            }}
-            h1, h2, h3, label {{
-                color: white !important;
-                text-shadow: 2px 2px 4px #000000;
-            }}
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        st.warning("⚠️ background.jpg not found in static/")
-except Exception as e:
-    st.warning(f"⚠️ Error loading background image: {e}")
+    bg_img = get_base64_image("static/background.jpg")
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpg;base64,{bg_img}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+except FileNotFoundError:
+    st.warning("`background.jpg` not found. Background image will not appear.")
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-color: #f0f2f6;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 # --- Heading ---
 st.markdown("""
@@ -69,6 +63,10 @@ features["Potassium"] = st.number_input("🧪 Potassium", 0.0, 150.0, step=0.1)
 
 # --- Prediction ---
 if st.button("🚀 Predict Fertilizer"):
-    fertilizer, tip = predict_fertilizer(features)
+    encoded_features = features.copy()
+    encoded_features["Soil Type"] = features["Soil Type"]
+    encoded_features["Crop Type"] = features["Crop Type"]
+
+    fertilizer, tip = predict_fertilizer(encoded_features)
     st.success(f"✅ Recommended Fertilizer: **{fertilizer}**")
     st.markdown(f"💡 **Usage Tip**: {tip}")
