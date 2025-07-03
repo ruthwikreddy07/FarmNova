@@ -11,7 +11,7 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 try:
-    bg_img = get_base64_image("background.jpg")
+    bg_img = get_base64_image("static/background.jpg")
     st.markdown(
         f"""
         <style>
@@ -26,7 +26,7 @@ try:
         unsafe_allow_html=True
     )
 except FileNotFoundError:
-    st.warning("`background.jpg` not found. Background image will not appear.")
+    st.warning("background.jpg not found. Background image will not appear.")
     st.markdown(
         """
         <style>
@@ -70,4 +70,3 @@ if st.button("🚀 Predict Fertilizer"):
     fertilizer, tip = predict_fertilizer(encoded_features)
     st.success(f"✅ Recommended Fertilizer: **{fertilizer}**")
     st.markdown(f"💡 **Usage Tip**: {tip}")
-
