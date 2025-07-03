@@ -1,9 +1,8 @@
-# predictor.py
 import pickle
 import numpy as np
+import os
 
-# Simple fertilizer tips dictionary
-# predictor.py
+# Fertilizer usage tips
 fertilizer_tips = {
     "Urea": "Best used before irrigation. Ensure even spreading for nitrogen absorption.",
     "DAP": "Rich in phosphorus. Use during sowing for strong root development.",
@@ -17,16 +16,16 @@ fertilizer_tips = {
     "Muriate of Potash": "Boosts fruiting and resistance to disease. Avoid overuse in sandy soils."
 }
 
-
 def predict_fertilizer(features):
-    with open("model.pkl", "rb") as f:
+    model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+    with open(model_path, "rb") as f:
         model, label_encoders, target_encoder, scaler = pickle.load(f)
 
-    # Encode Soil and Crop
+    # Encode categorical features
     features["Soil Type"] = label_encoders["Soil Type"].transform([features["Soil Type"]])[0]
     features["Crop Type"] = label_encoders["Crop Type"].transform([features["Crop Type"]])[0]
 
-    # Scale input
+    # Prepare and scale input
     input_features = np.array([
         features["Temperature"], features["Humidity"], features["Moisture"],
         features["Soil Type"], features["Crop Type"],
