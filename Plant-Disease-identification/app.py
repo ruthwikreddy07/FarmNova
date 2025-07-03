@@ -1,35 +1,32 @@
 import streamlit as st
 import numpy as np
-from keras.models import load_model
-from keras.preprocessing import image
 import os
-import base64
+import keras
+import requests
+from keras.preprocessing import image
 from pathlib import Path
 
 # --- Page Config ---
 st.set_page_config(page_title="Plant Disease Identifier", layout="centered")
 
-from pathlib import Path
-from keras.models import load_model
+# --- Model Setup ---
+model_url = "https://huggingface.co/ruthwik07/plant-disease-model/resolve/main/plant_disease_model.keras"
+model_dir = Path("model")
+model_path = model_dir / "plant_disease_model.keras"
 
-# Get path of current script
-app_dir = Path(__file__).parent
-model_path = app_dir / "plant_disease_model.keras"
+# Download the model safely
+if not model_path.exists():
+    model_dir.mkdir(exist_ok=True)
+    response = requests.get(model_url, stream=True)
+    if response.status_code == 200:
+        with open(model_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+    else:
+        st.error(f"❌ Failed to download model: HTTP {response.status_code}")
+        st.stop()
 
 # Load the model
-import os
-import keras
-import requests
-
-model_url = "https://huggingface.co/ruthwik07/plant-disease-model/resolve/main/plant_disease_model.keras"
-model_path = "plant_disease_model.keras"
-
-# Download the model if not already present
-if not os.path.exists(model_path):
-    os.makedirs("model", exist_ok=True)
-    with open(model_path, "wb") as f:
-        f.write(requests.get(model_url).content)
-
 model = keras.models.load_model(model_path)
 
 # --- Disease Info ---
@@ -38,10 +35,10 @@ disease_info = {
         "description": "A serious tomato disease caused by *Phytophthora infestans*, leading to large, dark, water-soaked lesions.",
         "link": "https://www.apsnet.org/edcenter/disandpath/oomycete/pdlessons/Pages/LateBlight.aspx"
     },
-    # Add more diseases as needed...
+    # Add more diseases here...
 }
 
-# --- Class names (match folder names) ---
+# --- Class Names ---
 class_names = sorted(os.listdir("dataset/test"))
 
 # --- UI ---
