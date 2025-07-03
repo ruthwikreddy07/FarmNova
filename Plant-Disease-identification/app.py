@@ -12,7 +12,7 @@ st.set_page_config(page_title="Plant Disease Identifier", layout="centered")
 # --- Load background image from static/background.jpg ---
 
 # --- Load the model ---
-model = load_model("model/plant_disease_model.keras")
+model = load_model("plant_disease_model.keras")
 
 # --- Disease Info ---
 disease_info = {
