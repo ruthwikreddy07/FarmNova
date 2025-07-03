@@ -17,7 +17,20 @@ app_dir = Path(__file__).parent
 model_path = app_dir / "plant_disease_model.keras"
 
 # Load the model
-model = load_model(model_path)
+import os
+import keras
+import requests
+
+model_url = "https://huggingface.co/ruthwik07/plant-disease-model/blob/main/plant_disease_model.keras"
+model_path = "plant_disease_model.keras"
+
+# Download the model if not already present
+if not os.path.exists(model_path):
+    os.makedirs("model", exist_ok=True)
+    with open(model_path, "wb") as f:
+        f.write(requests.get(model_url).content)
+
+model = keras.models.load_model(model_path)
 
 # --- Disease Info ---
 disease_info = {
