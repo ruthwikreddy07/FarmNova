@@ -21,7 +21,7 @@ import os
 import keras
 import requests
 
-model_url = "https://huggingface.co/ruthwik07/plant-disease-model/blob/main/plant_disease_model.keras"
+model_url = "https://huggingface.co/ruthwik07/plant-disease-model/resolve/main/plant_disease_model.keras"
 model_path = "plant_disease_model.keras"
 
 # Download the model if not already present
