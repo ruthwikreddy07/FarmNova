@@ -11,7 +11,7 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 try:
-    bg_img = get_base64_image("background.jpg")
+    bg_img = get_base64_image("static/background.jpg")
     st.markdown(
         f"""
         <style>
