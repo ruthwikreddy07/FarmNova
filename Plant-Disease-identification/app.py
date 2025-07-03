@@ -5,7 +5,7 @@ from keras.preprocessing import image
 import os
 
 # Load the model
-model = load_model("model/plant_disease_model.h5")
+model = load_model("model/plant_disease_model.keras")
 
 # Disease info dictionary
 disease_info = {

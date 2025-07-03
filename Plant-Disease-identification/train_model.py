@@ -1,5 +1,4 @@
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
@@ -13,75 +12,58 @@ test_dir = "dataset/test"
 
 # Parameters
 IMG_SIZE = (224, 224)
-BATCH_SIZE = 32
-EPOCHS = 10
+BATCH_SIZE = 16  # Increased batch size for fewer steps (reduce CPU load)
+EPOCHS = 5       # Fewer epochs for quick testing
 NUM_CLASSES = 15
 
-# Image Data Generators
-train_datagen = ImageDataGenerator(
-    rescale=1./255,
-    rotation_range=20,
-    zoom_range=0.2,
-    horizontal_flip=True
-)
-val_datagen = ImageDataGenerator(rescale=1./255)
-test_datagen = ImageDataGenerator(rescale=1./255)
+# Efficient data loader with small cache
+def prepare_dataset(directory, shuffle=True, limit_batches=200):
+    ds = tf.keras.utils.image_dataset_from_directory(
+        directory,
+        label_mode='categorical',
+        image_size=IMG_SIZE,
+        batch_size=BATCH_SIZE,
+        shuffle=shuffle
+    )
+    ds = ds.take(limit_batches)  # Take limited batches for low RAM usage
+    return ds.prefetch(tf.data.AUTOTUNE)
 
-train_generator = train_datagen.flow_from_directory(
-    train_dir,
-    target_size=IMG_SIZE,
-    batch_size=BATCH_SIZE,
-    class_mode='categorical'
-)
+train_dataset = prepare_dataset(train_dir, shuffle=True, limit_batches=3000)
+val_dataset = prepare_dataset(val_dir, shuffle=False, limit_batches=3000)
+test_dataset = prepare_dataset(test_dir, shuffle=False, limit_batches=3000)
 
-val_generator = val_datagen.flow_from_directory(
-    val_dir,
-    target_size=IMG_SIZE,
-    batch_size=BATCH_SIZE,
-    class_mode='categorical'
-)
-
-test_generator = test_datagen.flow_from_directory(
-    test_dir,
-    target_size=IMG_SIZE,
-    batch_size=BATCH_SIZE,
-    class_mode='categorical',
-    shuffle=False
-)
-
-# Load pre-trained MobileNetV2 model without top layer
+# Load base model with downloaded weights
 base_model = MobileNetV2(
-    weights='mobilenet_v2_weights.h5',  # local file
+    weights='mobilenet_v2_weights.h5',
     include_top=False,
     input_shape=(224, 224, 3)
 )
-
-# Freeze base model
 base_model.trainable = False
 
-# Add custom top layers
+# Add classification head
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(128, activation='relu')(x)
 predictions = Dense(NUM_CLASSES, activation='softmax')(x)
-
 model = Model(inputs=base_model.input, outputs=predictions)
 
-# Compile the model
-model.compile(optimizer=Adam(learning_rate=0.0001),
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
+# Compile
+model.compile(
+    optimizer=Adam(learning_rate=1e-4),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
 
-# Train the model
+# Train (no memory-clearing callback to retain dataset cache)
 model.fit(
-    train_generator,
+    train_dataset,
     epochs=EPOCHS,
-    validation_data=val_generator
+    validation_data=val_dataset
 )
 
 # Save model
-model.save("plant_disease_model.h5")
+model.save("plant_disease_model.keras")
 
-# Evaluate on test set
-loss, accuracy = model.evaluate(test_generator)
+# Evaluate
+loss, accuracy = model.evaluate(test_dataset)
 print(f"Test accuracy: {accuracy:.4f}")
