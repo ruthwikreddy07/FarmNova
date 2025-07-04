@@ -62,7 +62,11 @@ model.fit(
 )
 
 # Save model
+<<<<<<< HEAD
 model.save("plant_disease_model.h5")
+=======
+model.save("plant_disease_model.keras") 
+>>>>>>> 9ed4c699 (WIP: Save local changes before rebase)
 
 # Evaluate
 loss, accuracy = model.evaluate(test_dataset)
