@@ -1,7 +1,10 @@
-streamlit
-tensorflow==2.13.0
-keras
 numpy
+pickle-mixin
+streamlit
+seaborn
 pandas
-Pillow
 matplotlib
+scikit_learn
+tensorflow
+keras
+opencv_python_headless
