@@ -11,7 +11,8 @@ from pathlib import Path
 st.set_page_config(page_title="Plant Disease Identifier", layout="centered")
 
 # --- Model Setup ---
-model = load_model("plant_disease_model.keras")
+model = keras.models.load_model("plant_disease_model.h5")
+
 
 # --- Disease Info ---
 disease_info = {

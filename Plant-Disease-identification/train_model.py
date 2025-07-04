@@ -28,9 +28,9 @@ def prepare_dataset(directory, shuffle=True, limit_batches=200):
     ds = ds.take(limit_batches)  # Take limited batches for low RAM usage
     return ds.prefetch(tf.data.AUTOTUNE)
 
-train_dataset = prepare_dataset(train_dir, shuffle=True, limit_batches=3000)
-val_dataset = prepare_dataset(val_dir, shuffle=False, limit_batches=3000)
-test_dataset = prepare_dataset(test_dir, shuffle=False, limit_batches=3000)
+train_dataset = prepare_dataset(train_dir, shuffle=True, limit_batches=2000)
+val_dataset = prepare_dataset(val_dir, shuffle=False, limit_batches=2000)
+test_dataset = prepare_dataset(test_dir, shuffle=False, limit_batches=2000)
 
 # Load base model with downloaded weights
 base_model = MobileNetV2(
@@ -62,7 +62,7 @@ model.fit(
 )
 
 # Save model
-model.save("plant_disease_model.keras")
+model.save("plant_disease_model.h5")
 
 # Evaluate
 loss, accuracy = model.evaluate(test_dataset)
