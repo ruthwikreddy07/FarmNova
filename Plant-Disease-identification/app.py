@@ -4,6 +4,7 @@ import os
 import keras
 import requests
 from keras.preprocessing import image
+from keras.models import load_model  # ✅ ADD THIS
 from pathlib import Path
 
 # --- Page Config ---
