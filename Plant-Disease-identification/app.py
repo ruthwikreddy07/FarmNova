@@ -10,24 +10,7 @@ from pathlib import Path
 st.set_page_config(page_title="Plant Disease Identifier", layout="centered")
 
 # --- Model Setup ---
-model_url = "https://huggingface.co/ruthwik07/plant-disease-model/resolve/main/plant_disease_model.keras"
-model_dir = Path("model")
-model_path = model_dir / "plant_disease_model.keras"
-
-# Download the model safely
-if not model_path.exists():
-    model_dir.mkdir(exist_ok=True)
-    response = requests.get(model_url, stream=True)
-    if response.status_code == 200:
-        with open(model_path, "wb") as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                f.write(chunk)
-    else:
-        st.error(f"❌ Failed to download model: HTTP {response.status_code}")
-        st.stop()
-
-# Load the model
-model = keras.models.load_model(model_path)
+model = load_model("plant_disease_model.keras")
 
 # --- Disease Info ---
 disease_info = {
