@@ -5,6 +5,6 @@ seaborn
 pandas
 matplotlib
 scikit_learn
-tensorflow
+tensorflow-cpu==2.13.0
 keras
 opencv_python_headless
