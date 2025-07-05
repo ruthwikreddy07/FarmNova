@@ -26,7 +26,7 @@ def set_background(image_path):
     st.markdown(page_bg, unsafe_allow_html=True)
 
 # --- Set Background ---
-set_background("background.jpg")  # Adjust if your image path is different
+set_background("bg.jpg")  # Adjust if your image path is different
 
 import os
 import gdown
