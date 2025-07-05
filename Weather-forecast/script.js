@@ -104,13 +104,29 @@ async function getFiveDayForecast(city) {
     const response = await fetch(url);
     const forecastData = await response.json();
 
-    const filtered = forecastData.list.filter(item =>
-      item.dt_txt.includes("12:00:00")
-    ).slice(0, 5);
+    console.log("Forecast Data:", forecastData); // 🔍 Debugging output
+
+    forecastCards.innerHTML = ""; // Clear old data
+
+    if (!forecastData.list || forecastData.cod !== "200") {
+      console.warn("Forecast data missing or invalid");
+      forecastSection.style.display = "none";
+      return;
+    }
+
+    // 📅 Choose 1 data point per day: every 8th entry (~24hrs) starting from index 4 (12:00 pm approx)
+    const filtered = forecastData.list.filter((_, index) => index % 8 === 4).slice(0, 5);
+
+    if (filtered.length === 0) {
+      console.warn("No valid forecast entries found");
+      forecastSection.style.display = "none";
+      return;
+    }
 
     filtered.forEach(day => {
       const tempC = Math.round(day.main.temp - 273.15);
       const iconCode = day.weather[0].icon;
+      const description = day.weather[0].main;
       const date = new Date(day.dt_txt);
       const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
 
@@ -118,11 +134,13 @@ async function getFiveDayForecast(city) {
       card.className = "forecast-card";
       card.innerHTML = `
         <div>${dayName}</div>
-        <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${day.weather[0].main}" />
+        <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${description}" />
         <div>${tempC}°C</div>
       `;
       forecastCards.appendChild(card);
     });
+
+    forecastSection.style.display = "block"; // ✅ Only show if cards were added
 
   } catch (error) {
     console.error("Forecast fetch error", error);
