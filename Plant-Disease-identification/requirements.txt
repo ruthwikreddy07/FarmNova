@@ -1,8 +1,8 @@
 streamlit
-tensorflow==2.13.0
+tensorflow
 keras
 numpy
 pandas
-Pillow
 matplotlib
-gdown
+seaborn
+scikit-learn
