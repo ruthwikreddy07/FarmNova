@@ -8,6 +8,25 @@ from pathlib import Path
 
 # --- Page Config ---
 st.set_page_config(page_title="Plant Disease Identifier", layout="centered")
+# --- Page Config ---
+def set_background(image_path):
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+    page_bg = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{encoded}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(page_bg, unsafe_allow_html=True)
+
+# --- Set Background ---
+set_background("background.jpg")  # Adjust if your image path is different
 
 import os
 import gdown
