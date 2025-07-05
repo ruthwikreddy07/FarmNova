@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Forecast</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://kit.fontawesome.com/595a890311.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-    <header class="header">
-        <h1 class="header-title">WEATHER FORECAST</h1>
-    </header>
+  <header class="header">
+    <h1 class="header-title">WEATHER FORECAST</h1>
+  </header>
 
-    <div class="container">
-        <div class="header-sec">
-            <div class="search-box">
-                <input type="text" placeholder="Enter your location" class="input-box">
-
-                <button class="fa-solid fa-magnifying-glass" id="searchBtn"></button>
-            </div>
-        </div>
-
-        <div class="location-not-found">
-            <h1>Sorry, Location not found!!!</h1>
-            <img src="img/404.png" alt="404 Error">
-        </div>
-
-        <div class="weather-body">
-            <img src="img/cloud.png" alt="Weather Image" class="weather-img">
-
-            <div class="weather-box">
-                <p class="temperature">0 <sup>°C</sup></p>
-                <p class="description">light rain</p>
-            </div>
-
-            <div class="weather-details">
-                <div class="humidity">
-                    <i class="fa-sharp fa-solid fa-droplet"></i>
-                    <div class="text">
-                        <span id="humidity">45%</span>
-                        <p>Humidity</p>
-                    </div>
-                </div>
-
-                <div class="wind">
-                    <i class="fa-solid fa-wind"></i>
-                    <div class="text">
-                        <span id="wind-speed">12Km/H</span>
-                        <p>Wind Speed</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" placeholder="Enter your location" class="input-box" />
+      <button id="searchBtn" title="Search" class="search-btn">Search</button>
     </div>
 
-    <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/595a890311.js" crossorigin="anonymous"></script>
-</body>
+    <div class="loader" id="loader"></div>
 
+    <div class="location-not-found">
+      <h1>Sorry, Location not found!!!</h1>
+      <img src="img/404.png" alt="404 Error" />
+    </div>
+
+    <div class="weather-body">
+      <img src="img/cloud.png" alt="Weather Image" class="weather-img" />
+
+      <div class="weather-box">
+        <p class="temperature">0<sup>°C</sup></p>
+        <p class="description">light rain</p>
+      </div>
+
+      <div class="weather-details">
+        <div class="humidity">
+          <i class="fa-sharp fa-solid fa-droplet"></i>
+          <div class="text">
+            <span id="humidity">45%</span>
+            <p>Humidity</p>
+          </div>
+        </div>
+
+        <div class="wind">
+          <i class="fa-solid fa-wind"></i>
+          <div class="text">
+            <span id="wind-speed">12Km/H</span>
+            <p>Wind Speed</p>
+          </div>
+        </div>
+      </div>
+
+      <button id="toggleTemp" class="toggle-temp-btn">Switch to °F</button>
+    </div>
+
+    <!-- 5-DAY FORECAST SECTION -->
+    <div class="forecast-container">
+      <h2>5-Day Forecast</h2>
+      <div class="forecast-cards" id="forecastCards"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
