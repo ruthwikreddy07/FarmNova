@@ -45,12 +45,68 @@ model = load_model(model_path)
 
 # --- Disease Info ---
 disease_info = {
+    "Pepper__bell___Bacterial_spot": {
+        "description": "Caused by *Xanthomonas campestris*, it forms dark, water-soaked lesions on leaves and fruits of bell pepper.",
+        "link": "https://plantvillage.psu.edu/topics/bacterial-spot-pepper/infos"
+    },
+    "Pepper__bell___healthy": {
+        "description": "The plant is healthy with no visible signs of bacterial or fungal disease.",
+        "link": "https://www.researchgate.net/figure/Healthy-pepper-plant_fig1_327527437"
+    },
+    "Potato___Early_blight": {
+        "description": "Caused by *Alternaria solani*, it leads to concentric leaf spots and premature defoliation.",
+        "link": "https://www.cabi.org/isc/datasheet/14515"
+    },
+    "Potato___Late_blight": {
+        "description": "*Phytophthora infestans* causes black lesions on leaves and tuber rot, especially in wet conditions.",
+        "link": "https://www.apsnet.org/publications/imageresources/Pages/2011-01.aspx"
+    },
+    "Potato___healthy": {
+        "description": "Leaves are fresh and free of disease symptoms, with even green coloring.",
+        "link": "https://www.researchgate.net/figure/Healthy-potato-plant_fig1_318004161"
+    },
+    "Tomato_Bacterial_spot": {
+        "description": "Caused by *Xanthomonas spp.*, it causes dark spots on foliage and fruit, reducing yield.",
+        "link": "https://extension.umn.edu/diseases/bacterial-spot-tomato"
+    },
+    "Tomato_Early_blight": {
+        "description": "*Alternaria solani* causes dark lesions on older leaves, often with concentric rings.",
+        "link": "https://www.apsnet.org/edcenter/disandpath/fungalbasics/Pages/EarlyBlight.aspx"
+    },
     "Tomato_Late_blight": {
-        "description": "A serious tomato disease caused by *Phytophthora infestans*, leading to large, dark, water-soaked lesions.",
+        "description": "*Phytophthora infestans* causes water-soaked, rapidly spreading lesions on leaves and fruit.",
         "link": "https://www.apsnet.org/edcenter/disandpath/oomycete/pdlessons/Pages/LateBlight.aspx"
     },
-    # Add more diseases as needed...
+    "Tomato_Leaf_Mold": {
+        "description": "*Passalora fulva* causes pale green or yellow spots on upper leaf surfaces and olive-green mold underneath.",
+        "link": "https://www.apsnet.org/edcenter/disandpath/fungalbasics/Pages/LeafMold.aspx"
+    },
+    "Tomato_Septoria_leaf_spot": {
+        "description": "*Septoria lycopersici* creates small, circular spots with gray centers and dark borders on leaves.",
+        "link": "https://ag.umass.edu/vegetable/fact-sheets/tomato-septoria-leaf-spot"
+    },
+    "Tomato_Spider_mites_Two_spotted_spider_mite": {
+        "description": "Caused by *Tetranychus urticae*, these pests lead to stippling and bronzing on tomato leaves.",
+        "link": "https://ipm.ucanr.edu/PMG/PESTNOTES/pn7405.html"
+    },
+    "Tomato__Target_Spot": {
+        "description": "Caused by *Corynespora cassiicola*, it leads to round brown lesions with concentric rings on leaves.",
+        "link": "https://edis.ifas.ufl.edu/publication/pp313"
+    },
+    "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+        "description": "This virus, spread by whiteflies, causes leaf curling, stunted growth, and yellowing.",
+        "link": "https://www.apsnet.org/edcenter/disandpath/viral/pdlessons/Pages/TYLCV.aspx"
+    },
+    "Tomato__Tomato_mosaic_virus": {
+        "description": "TMV causes mottled, discolored patches on tomato leaves and malformed fruits.",
+        "link": "https://www.gardeningknowhow.com/edible/vegetables/tomato/tomato-mosaic-virus.htm"
+    },
+    "Tomato_healthy": {
+        "description": "No signs of stress, disease, or damage — the plant is vigorous and thriving.",
+        "link": "https://www.researchgate.net/figure/Healthy-tomato-plant-leaves_fig1_339316772"
+    }
 }
+
 
 # --- Class names (match folder names) ---
 dataset_path = os.path.join(os.path.dirname(__file__), "dataset", "test")
