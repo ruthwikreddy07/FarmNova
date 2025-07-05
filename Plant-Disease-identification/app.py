@@ -32,7 +32,9 @@ disease_info = {
 }
 
 # --- Class names (match folder names) ---
-class_names = sorted(os.listdir("dataset/test"))
+dataset_path = os.path.join(os.path.dirname(__file__), "dataset", "test")
+class_names = sorted(os.listdir(dataset_path))
+
 
 # --- UI ---
 st.markdown("""
