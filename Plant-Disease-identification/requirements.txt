@@ -1,9 +1,0 @@
-numpy
-pickle-mixin
-streamlit
-seaborn
-pandas
-matplotlib
-scikit_learn
-tensorflow-cpu==2.13.0
-opencv-python-headless
