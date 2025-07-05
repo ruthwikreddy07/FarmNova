@@ -10,6 +10,7 @@ const weather_body = document.querySelector('.weather-body');
 const loader = document.getElementById('loader');
 const toggleBtn = document.getElementById('toggleTemp');
 const forecastCards = document.getElementById("forecastCards");
+const forecastSection = document.getElementById("forecastSection");
 
 let isCelsius = true;
 let currentTemp = 0;
@@ -47,6 +48,7 @@ async function checkWeather(city) {
   weather_body.style.display = "none";
   location_not_found.style.display = "none";
   forecastCards.innerHTML = "";
+  forecastSection.style.display = "none";
 
   const api_key = "410346b3c4c3402ade4444118f893b39";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
@@ -62,6 +64,7 @@ async function checkWeather(city) {
     }
 
     weather_body.style.display = "flex";
+    forecastSection.style.display = "block";
 
     updateTemperature(weather_data.main.temp);
     description.innerHTML = weather_data.weather[0].description;
@@ -89,6 +92,7 @@ async function checkWeather(city) {
     console.error("API Error:", error);
     loader.style.display = "none";
     location_not_found.style.display = "flex";
+    forecastSection.style.display = "none";
   }
 }
 
@@ -122,5 +126,6 @@ async function getFiveDayForecast(city) {
 
   } catch (error) {
     console.error("Forecast fetch error", error);
+    forecastSection.style.display = "none";
   }
 }
