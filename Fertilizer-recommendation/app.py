@@ -72,4 +72,3 @@ if st.button("🚀 Predict Fertilizer"):
     fertilizer, tip = predict_fertilizer(features)
     st.success(f"✅ Recommended Fertilizer: **{fertilizer}**")
     st.markdown(f"💡 **Usage Tip**: {tip}")
-=======
