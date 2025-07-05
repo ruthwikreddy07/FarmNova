@@ -9,15 +9,18 @@ from pathlib import Path
 # --- Page Config ---
 st.set_page_config(page_title="Plant Disease Identifier", layout="centered")
 
-from pathlib import Path
+import os
+import gdown
 from keras.models import load_model
 
-# Get path of current script
-app_dir = Path(__file__).parent
-model_path = app_dir / "plant_disease_model.keras"
+model_path = "plant_disease_model.keras"
+gdrive_file_id = "1DEkYjnpWFjamJV1ryuUubHe8w1TygsFr"
 
-# Load the model
+if not os.path.exists(model_path):
+    gdown.download(f"https://drive.google.com/uc?id={gdrive_file_id}", model_path, quiet=False)
+
 model = load_model(model_path)
+
 
 # --- Disease Info ---
 disease_info = {
