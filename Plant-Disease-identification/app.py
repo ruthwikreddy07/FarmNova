@@ -14,7 +14,7 @@ from keras.models import load_model
 
 # Get path of current script
 app_dir = Path(__file__).parent
-model_path = app_dir / "plant_disease_model.h5"
+model_path = app_dir / "plant_disease_model.keras"
 
 # Load the model
 model = load_model(model_path)
