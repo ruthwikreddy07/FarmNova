@@ -15,7 +15,7 @@ def get_base64_image(image_path):
 
 # --- Load and Apply Background Image ---
 try:
-    bg_image_path = "static/background.jpg"  # ✅ SIMPLIFIED PATH
+    bg_image_path = os.path.join(os.path.dirname(__file__), "static", "background.jpg")
     bg_base64 = get_base64_image(bg_image_path)
 
     st.markdown(
