@@ -43,6 +43,8 @@ FarmNova is an AI-powered smart farming platform designed to assist farmers with
 FarmNova/
 │
 ├── Crop-Recommendation/
+│ ├── static/
+│ |  └──background.jpg
 │ ├── app.py
 │ ├── RF.pkl
 │ ├── Crop_recommendation.csv
@@ -50,6 +52,10 @@ FarmNova/
 │ └── requirements.txt
 │
 ├── Fertilizer-recommendation/
+│ ├── static/
+│ |  └──background.jpg
+│ ├── .gitignore
+│ ├── data_loader.csv
 │ ├── app.py
 │ ├── model.pkl
 │ ├── data_core.csv
@@ -59,19 +65,25 @@ FarmNova/
 │ └── requirements.txt
 │
 ├── Plant-Disease-identification/
+│ ├── dataset
 │ ├── app.py
+│ ├── bg.jpg
+│ ├── download_weights.py
 │ ├── plant_disease_model.h5 / .keras
 │ ├── mobilenet_v2_weights.h5
 │ ├── predict.py
 │ ├── train_model.py
+│ ├── runtime.txt
 │ └── requirements.txt
 │
 ├── Weather-forecast/
+│ ├── images
 │ ├── index.html
 │ ├── style.css
 │ └── script.js
 │
 ├── Farmer-guide/
+│ ├── rice.jpg
 │ ├── index.html
 │ ├── styles.css
 │ └── script.js
@@ -79,8 +91,10 @@ FarmNova/
 ├── FarmNova-homepage/
 │ ├── index.html
 │ ├── CSS/
+│ |  └── style.css
 │ ├── images/
 │ └── js/
+│    └── main.js
 │
 └── README.md 
 ```
