@@ -17,15 +17,26 @@ FarmNova is an AI-powered smart farming platform designed to assist farmers with
 
 ## 🧠 Tech Stack
 
-| Layer           | Technology                                  |
-|----------------|----------------------------------------------|
-| Frontend       | HTML, CSS, JavaScript                        |
-| Backend        | Python, Flask                                |
-| Machine Learning | Scikit-learn, TensorFlow, OpenCV             |
-| Deployment     | Netlify (Frontend), Render/Localhost (Backend) |
+### 🖥️ Frontend
+- HTML, CSS, JavaScript (UI Design)
+- Streamlit (ML tool interface)
+- **Deployment**: Netlify
+
+### ⚙️ Backend & ML
+- **Crop & Fertilizer**: scikit-learn, XGBoost
+- **Disease Detection**: TensorFlow + Keras (MobileNetV2)
+- OpenCV, PIL, Pandas, NumPy
+- **Model Formats**: `.pkl` (ML), `.h5` (DL)
+
+### 🌐 APIs
+- OpenWeatherMap (Live weather data)
+- `gdown` for Google Drive model loading
+
+### 🚀 Deployment
+- **Frontend**: Netlify
+- **ML Tools**: Streamlit Cloud
 
 ---
-
 ## 📁 Project Structure
 
 ```
