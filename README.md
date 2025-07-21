@@ -40,17 +40,49 @@ FarmNova is an AI-powered smart farming platform designed to assist farmers with
 ## 📁 Project Structure
 
 ```
-farmnova/
-├── frontend/           # HTML, CSS, JS files for UI
-├── backend/            # Python Flask APIs and ML models
-│   ├── models/         # Trained ML models (crop, disease, fertilizer)
-│   ├── static/         # Static files (images, etc.)
-│   ├── templates/      # Jinja2 HTML templates
-│   └── app.py          # Main Flask app
-├── data/               # Datasets for training and testing
-├── requirements.txt    # Python dependencies
-├── README.md           # Project documentation
-└── .env.example        # Environment variables sample
+FarmNova/
+│
+├── Crop-Recommendation/
+│ ├── app.py
+│ ├── RF.pkl
+│ ├── Crop_recommendation.csv
+│ ├── train_model.py
+│ └── requirements.txt
+│
+├── Fertilizer-recommendation/
+│ ├── app.py
+│ ├── model.pkl
+│ ├── data_core.csv
+│ ├── analyze_data.py
+│ ├── model.py
+│ ├── predictor.py
+│ └── requirements.txt
+│
+├── Plant-Disease-identification/
+│ ├── app.py
+│ ├── plant_disease_model.h5 / .keras
+│ ├── mobilenet_v2_weights.h5
+│ ├── predict.py
+│ ├── train_model.py
+│ └── requirements.txt
+│
+├── Weather-forecast/
+│ ├── index.html
+│ ├── style.css
+│ └── script.js
+│
+├── Farmer-guide/
+│ ├── index.html
+│ ├── styles.css
+│ └── script.js
+│
+├── FarmNova-homepage/
+│ ├── index.html
+│ ├── CSS/
+│ ├── images/
+│ └── js/
+│
+└── README.md 
 ```
 
 ---
