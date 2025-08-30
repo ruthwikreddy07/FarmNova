@@ -1,7 +1,7 @@
 # 🌾 FarmNova – Smart Farming Assistant
 
 FarmNova is an AI-powered smart farming platform designed to assist farmers with crop recommendation, fertilizer suggestions, plant disease identification, weather forecasting, and crop cultivation guidance – all from one place.
-
+LINK - https://farmnova.netlify.app/
 ---
 
 ## 🚀 Features
